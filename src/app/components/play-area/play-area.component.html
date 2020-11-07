@@ -1,0 +1,29 @@
+<h1>Tic Tac Toe</h1>
+<h2>Player {{currentPlayer}} it's your move...</h2>
+
+<!-- Game Area -->
+<div class="play-area">
+  <game-btn *ngFor="let position of gridPositions;"
+            [move]="position.moveMade"
+            (click)="playerMove(position.gridCoordinate)"
+            [disabled]="position.disabled"
+  ></game-btn>
+</div>
+
+<button (click)="startNewGame()">New Game</button>
+
+<!-- Score Board -->
+<score-board [scores]="scores"></score-board>
+
+<!-- Winner Output -->
+<div *ngIf="winner">
+  <h3>Congratulations player {{currentPlayer}}, you have won this round!</h3>
+  <div>Start a new game to play the next round.</div>
+</div>
+
+<!-- Draw Output -->
+<div *ngIf="draw">
+  <h3>Draw! Everyone's a winner!</h3>
+  <div>Start a new game to play the next round.</div>
+</div>
+
